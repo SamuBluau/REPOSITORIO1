@@ -45,7 +45,7 @@ if uploaded_files:
         st.dataframe(cleaned_df.head())
 
         # Botón para descargar el archivo procesado
-        st.cache_data(\n        
+        st.cache_data(\       
         def convert_df_to_csv(df):\n            
         return df.to_csv(index=False).encode('utf-8')\n\n        
         csv = convert_df_to_csv(cleaned_df)\n\n        
