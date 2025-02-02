@@ -44,13 +44,17 @@ if uploaded_files:
         st.write("### Vista previa de los datos procesados:")
         st.dataframe(cleaned_df.head())
 
+        # Función para convertir el DataFrame a CSV
+        @st.cache_data
+        def convert_df_to_csv(df):
+            return df.to_csv(index=False).encode('utf-8')
+
+        csv = convert_df_to_csv(cleaned_df)
+
         # Botón para descargar el archivo procesado
-        st.cache_data(\n)    
-        def convert_df_to_csv(df):\n            
-        return df.to_csv(index=False).encode('utf-8')\n\n        
-        csv = convert_df_to_csv(cleaned_df)\n\n        
-        st.download_button(\n)           
-        label=\"Descargar archivo limpio\",\n            
-        data=csv,\n            
-        file_name=\"input_bibliometrix.csv\",\n            
-        mime=\"text/csv\"(\n)\n\n``
+        st.download_button(
+            label="Descargar archivo limpio",
+            data=csv,
+            file_name="input_bibliometrix.csv",
+            mime="text/csv"
+        )
